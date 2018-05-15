@@ -74,6 +74,7 @@
     "coverage": "cross-env MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 TESTING=1 nyc jasmine",
     "start": "node ./bin/parse-server",
     "prepublish": "npm run build",
+    "prepack": "npm run build",
     "postinstall": "node -p 'require(\"./postinstall.js\")()'"
   },
   "engines": {
