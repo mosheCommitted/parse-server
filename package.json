@@ -73,9 +73,8 @@
     "test": "cross-env MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 TESTING=1 jasmine",
     "coverage": "cross-env MONGODB_VERSION=${MONGODB_VERSION:=3.2.6} MONGODB_STORAGE_ENGINE=mmapv1 TESTING=1 nyc jasmine",
     "start": "node ./bin/parse-server",
-    "prepublish": "npm run build",
-    "prepack": "npm run build",
-    "postinstall": "node -p 'require(\"./postinstall.js\")()'"
+    "prepublish": "npm run build",    
+    "postinstall": "node -e \"require('fs').stat('lib', function (e, s) { process.exit(e || !s.isDirectory() ? 1 : 0) })\" || npm run build && node -e 'require(\"./postinstall.js\")()'"
   },
   "engines": {
     "node": ">=6.11.4"
